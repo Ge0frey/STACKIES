@@ -20,5 +20,7 @@ contract Todos {
         todos[0] = EMPTY_TODO;
     }
 
+    uint256 public todoIncrement = 1;
+
     mapping(address => TodoItem[]) public ownerToTodos;
 }
