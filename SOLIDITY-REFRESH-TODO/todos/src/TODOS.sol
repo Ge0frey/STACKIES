@@ -79,5 +79,18 @@ contract Todos {
             keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2));
     }
 
+    function getTodo(uint256 _todoId) public view returns (TodoItem memory) {
+        require(_todoId <= todoIncrement, "Todo item does not exist!");
+        TodoItem memory todoItem = todos[_todoId];
+        return todoItem;
+    }
+
+    function getTodosByOwner(
+        address _owner
+    ) public view returns (TodoItem[] memory) {
+        TodoItem[] memory todoItems = ownerToTodos[_owner];
+        return todoItems;
+    }
+
     mapping(address => TodoItem[]) public ownerToTodos;
 }
